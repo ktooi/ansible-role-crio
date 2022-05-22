@@ -34,7 +34,7 @@ None.
 
 ```yaml
 - hosts: crio-servers
-  roles: ktooi.crio.crio
+  roles:
     - ktooi.crio
 ````
 
