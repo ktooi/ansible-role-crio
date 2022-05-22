@@ -1,12 +1,18 @@
 ---
-# If you want to install crio 1.18.3, set "1.18:1.18.3".
-crio_version: "1.18"
+crio_version: "1.23"
 crio_sysctl_filename: "/etc/sysctl.d/99-kubernetes-cri.conf"
+# crio_runc_version:
 
 # For Debian/Ubuntu
 crio_apt_repo: "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os }}/ /"
-crio_apt_repo_filename: "devel:kubic:libcontainers:stable.list"
+crio_apt_repo_filename: "devel:kubic:libcontainers:stable"
 crio_apt_repo_key_url: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os }}/Release.key"
-crio_apt_crio_repo: "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ crio_version }}/{{ crio_os }}/ /"
-crio_apt_crio_repo_filename: "devel:kubic:libcontainers:stable:cri-o:{{ crio_version }}.list"
-crio_apt_crio_repo_key_url: "https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:{{ crio_version }}/{{ crio_os }}/Release.key"
+crio_apt_crio_repo: "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ crio_version_url }}/{{ crio_os }}/ /"
+crio_apt_crio_repo_filename: "devel:kubic:libcontainers:stable:cri-o:{{ crio_version }}"
+crio_apt_crio_repo_key_url: "https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:{{ crio_version_url }}/{{ crio_os }}/Release.key"
+
+# The following variables are automatically defined.
+# (They can be overridden by defining them manually.)
+# crio_os:
+# crio_install_version:
+# crio_version_url:

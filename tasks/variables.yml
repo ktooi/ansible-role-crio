@@ -14,3 +14,13 @@
   set_fact:
     crio_os: "{{ __crio_os }}"
   when: crio_os is not defined
+
+- name: Define crio_install_version
+  set_fact:
+    crio_install_version: "{{ crio_version ~ '~*' if crio_version.split('.') | length > 2 else crio_version ~ '.*' }}"
+  when: crio_install_version is not defined
+
+- name: Define crio_version_url
+  set_fact:
+    crio_version_url: "{{ crio_version.split('.')[0:2] | join('.') ~ ':/' ~ crio_version if crio_version.split('.') | length > 2 else crio_version }}"
+  when: crio_version_url is not defined

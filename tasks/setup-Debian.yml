@@ -1,34 +1,34 @@
 ---
-- name:
+- name: Add an apt key of cri-o utils
   apt_key:
     url: "{{ crio_apt_repo_key_url }}"
     state: present
   become: true
 
-- name:
+- name: Add an apt repository of cri-o utils
   apt_repository:
     repo: "{{ crio_apt_repo }}"
     filename: "{{ crio_apt_repo_filename }}"
     state: present
   become: true
 
-- name:
+- name: Add an apt key of cri-o
   apt_key:
     url: "{{ crio_apt_crio_repo_key_url }}"
     state: present
   become: true
 
-- name:
+- name: Add an apt repository of cri-o
   apt_repository:
     repo: "{{ crio_apt_crio_repo }}"
     filename: "{{ crio_apt_crio_repo_filename }}"
     state: present
   become: true
 
-- name:
+- name: Install cri-o
   apt:
     name:
-      - cri-o
-      - cri-o-runc
+      - "cri-o={{ crio_install_version }}"
+      - "cri-o-runc{{ '=' ~ crio_runc_version if crio_runc_version is defined else '' }}"
     state: present
   become: true
