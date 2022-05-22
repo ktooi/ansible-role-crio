@@ -1,0 +1,34 @@
+---
+- name:
+  apt_key:
+    url: "{{ crio_apt_repo_key_url }}"
+    state: present
+  become: true
+
+- name:
+  apt_repository:
+    repo: "{{ crio_apt_repo }}"
+    filename: "{{ crio_apt_repo_filename }}"
+    state: present
+  become: true
+
+- name:
+  apt_key:
+    url: "{{ crio_apt_crio_repo_key_url }}"
+    state: present
+  become: true
+
+- name:
+  apt_repository:
+    repo: "{{ crio_apt_crio_repo }}"
+    filename: "{{ crio_apt_crio_repo_filename }}"
+    state: present
+  become: true
+
+- name:
+  apt:
+    name:
+      - cri-o
+      - cri-o-runc
+    state: present
+  become: true

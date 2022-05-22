@@ -1,0 +1,16 @@
+---
+- name: Include OS-specfic variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "vars/{{ ansible_lsb.id }}-{{ ansible_lsb.release }}.yml"
+        - "vars/{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
+        - "vars/{{ ansible_os_family }}.yml"
+      skip: true
+  tags:
+    - always
+
+- name: Define crio_os
+  set_fact:
+    crio_os: "{{ __crio_os }}"
+  when: crio_os is not defined

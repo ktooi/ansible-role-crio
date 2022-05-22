@@ -1,0 +1,30 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: crio
+  author: ktooi
+  description: Install cri-o for RHEL/CentOS and Debian/Ubuntu.
+  license: "license (MIT)"
+  min_ansible_version: 2.0
+  platforms:
+    - name: EL
+      versions:
+         - 8
+    # - name: Archlinux
+    #   versions:
+    #     - all
+    - name: Ubuntu
+      versions:
+        - '18.04'
+        - '20.04'
+        - '20.10'
+        - '21.04'
+        - '21.10'
+        - '22.04'
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - crio
+    - cri-o
