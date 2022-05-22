@@ -20,6 +20,11 @@
     crio_install_version: "{{ crio_version ~ '~*' if crio_version.split('.') | length > 2 else crio_version ~ '.*' }}"
   when: crio_install_version is not defined
 
+- name: Define crio_long_version
+  set_fact:
+    crio_long_version: "{{ crio_version.split('.')[0:2] | join('.') ~ ':' ~ crio_version if crio_version.split('.') | length > 2 else crio_version }}"
+  when: crio_long_version is not defined
+
 - name: Define crio_version_url
   set_fact:
     crio_version_url: "{{ crio_version.split('.')[0:2] | join('.') ~ ':/' ~ crio_version if crio_version.split('.') | length > 2 else crio_version }}"

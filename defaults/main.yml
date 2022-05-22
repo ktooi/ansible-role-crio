@@ -11,6 +11,23 @@ crio_apt_crio_repo: "deb http://download.opensuse.org/repositories/devel:/kubic:
 crio_apt_crio_repo_filename: "devel:kubic:libcontainers:stable:cri-o:{{ crio_version }}"
 crio_apt_crio_repo_key_url: "https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:{{ crio_version_url }}/{{ crio_os }}/Release.key"
 
+# For RHEL/CentOS
+crio_yum_repo_filename: "devel:kubic:libcontainers:stable"
+crio_yum_repo_name: "{{ crio_yum_repo_filename | regex_replace(':', '_') }}"
+crio_yum_repo_description: "Stable Releases of Upstream github.com/containers packages ({{ crio_os }})"
+crio_yum_repo_baseurl: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os }}/"
+crio_yum_repo_gpgcheck: true
+crio_yum_repo_gpgkey: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os }}/repodata/repomd.xml.key"
+crio_yum_repo_enabled: true
+
+crio_yum_crio_repo_filename: "devel:kubic:libcontainers:stable:cri-o:{{ crio_long_version }}"
+crio_yum_crio_repo_name: "{{ crio_yum_crio_repo_filename | regex_replace(':', '_') }}"
+crio_yum_crio_repo_description: "devel:kubic:libcontainers:stable:cri-o:{{ crio_long_version }} ({{ crio_os }})"
+crio_yum_crio_repo_baseurl: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ crio_version_url }}/{{ crio_os }}/"
+crio_yum_crio_repo_gpgcheck: true
+crio_yum_crio_repo_gpgkey: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ crio_version_url }}/{{ crio_os }}/repodata/repomd.xml.key"
+crio_yum_crio_repo_enabled: true
+
 # The following variables are automatically defined.
 # (They can be overridden by defining them manually.)
 # crio_os:

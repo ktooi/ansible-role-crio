@@ -1,0 +1,29 @@
+---
+- name: Add a yum repository of cri-o utils
+  yum_repository:
+    name: "{{ crio_yum_repo_name }}"
+    description: "{{ crio_yum_repo_description }}"
+    baseurl: "{{ crio_yum_repo_baseurl }}"
+    gpgcheck: "{{ crio_yum_repo_gpgcheck }}"
+    enabled: "{{ crio_yum_repo_enabled }}"
+    file: "{{ crio_yum_repo_filename }}"
+    state: present
+  become: true
+
+- name: Add an yum repository of cri-o
+  yum_repository:
+    name: "{{ crio_yum_crio_repo_name }}"
+    description: "{{ crio_yum_crio_repo_description }}"
+    baseurl: "{{ crio_yum_crio_repo_baseurl }}"
+    gpgcheck: "{{ crio_yum_crio_repo_gpgcheck }}"
+    enabled: "{{ crio_yum_crio_repo_enabled }}"
+    file: "{{ crio_yum_crio_repo_filename }}"
+    state: present
+  become: true
+
+- name: Install cri-o
+  apt:
+    name:
+      - "cri-o={{ crio_version }}"
+    state: present
+  become: true
