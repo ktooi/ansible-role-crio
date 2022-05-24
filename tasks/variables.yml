@@ -1,16 +1,16 @@
 ---
 - debug:
     msg:
-      - "vars/{{ ansible_lsb.id }}-{{ ansible_lsb.release }}.yml"
-      - "vars/{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
-      - "vars/{{ ansible_os_family }}.yml"
+      - "vars/{{ ansible_distribution }}-{{ ansible_lsb.release }}.yml"
+      - "vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+      - "vars/{{ ansible_distribution }}.yml"
 - name: Include OS-specfic variables
   include_vars: "{{ item }}"
   with_first_found:
     - files:
-        - "vars/{{ ansible_lsb.id }}-{{ ansible_lsb.release }}.yml"
-        - "vars/{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
-        - "vars/{{ ansible_os_family }}.yml"
+        - "vars/{{ ansible_distribution }}-{{ ansible_lsb.release }}.yml"
+        - "vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+        - "vars/{{ ansible_distribution }}.yml"
       skip: true
   tags:
     - always
