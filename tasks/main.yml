@@ -9,3 +9,4 @@
     - files:
         - "setup-{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
         - "setup-{{ ansible_os_family }}.yml"
+- include_tasks: "configure.yml"

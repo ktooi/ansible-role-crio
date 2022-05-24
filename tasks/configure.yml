@@ -1,0 +1,7 @@
+---
+- name: Ensure that CRI-O is started
+  systemd:
+    name: crio
+    enabled: true
+    state: started
+  become: true
