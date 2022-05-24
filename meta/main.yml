@@ -25,7 +25,8 @@ galaxy_info:
         - 'jammy'    # 22.04
     - name: Debian
       versions:
-        - all
+        - 'buster'    # 10
+        - 'bullseye'  # 11
   galaxy_tags:
     - crio
     - cri-o
