@@ -22,7 +22,7 @@
   become: true
 
 - name: Install cri-o
-  apt:
+  yum:
     name:
       - "cri-o={{ crio_version }}"
     state: present
