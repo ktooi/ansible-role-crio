@@ -1,9 +1,4 @@
 ---
-- debug:
-    msg:
-      - "vars/{{ ansible_distribution }}-{{ ansible_lsb.release | default('') }}.yml"
-      - "vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-      - "vars/{{ ansible_distribution }}.yml"
 - name: Include OS-specfic variables
   include_vars: "{{ item }}"
   with_first_found:
