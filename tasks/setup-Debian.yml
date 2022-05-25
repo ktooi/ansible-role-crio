@@ -1,4 +1,11 @@
 ---
+- name: Ensure gpg-agent is installed for the apt_key module
+  apt:
+    name:
+      - "gpt-agent"
+    state: present
+  become: true
+
 - name: Add an apt key of cri-o utils
   apt_key:
     url: "{{ crio_apt_repo_key_url }}"
