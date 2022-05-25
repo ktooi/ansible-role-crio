@@ -69,17 +69,18 @@ jobs:
         with:
           python-version: '3.x'
 
+      - uses: syphar/restore-virtualenv@v1
+        id: cache-virtualenv
+
+      - uses: syphar/restore-pip-download-cache@v1
+        if: steps.cache-virtualenv.outputs.cache-hit != 'true'
+
       - name: Cache packages
         uses: actions/cache@v3
         env:
           cache-name: python-3
         with:
-          path: |
-            ~/.cache/pip
-            ansible_collections/
-            build/
-            ${{ env.LD_LIBRARY_PATH }}
-            /home/runner/.cache/molecule/
+          path: /home/runner/.cache/molecule/
           key: ${{ matrix.distro }}-molecule-${{ github.sha }}
           restore-keys: ${{ matrix.distro }}-molecule-
 
