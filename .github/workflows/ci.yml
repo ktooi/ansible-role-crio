@@ -69,26 +69,27 @@ jobs:
         with:
           python-version: '3.x'
 
-      - uses: syphar/restore-virtualenv@v1
-        id: cache-virtualenv
-
-      - uses: syphar/restore-pip-download-cache@v1
-        if: steps.cache-virtualenv.outputs.cache-hit != 'true'
-
       - name: Cache packages
         uses: actions/cache@v3
         env:
           cache-name: python-3
         with:
-          path: /home/runner/.cache/molecule/
+          path: |
+            /home/runner/.cache/molecule/
+            ~/venv/
           key: ${{ matrix.distro }}-molecule-${{ github.sha }}
           restore-keys: ${{ matrix.distro }}-molecule-
 
       - name: Install test dependencies.
-        run: pip3 -vvv install ansible molecule[docker] docker
+        run: |
+          python3 -m venv ~/venv
+          source ~/venv/bin/activate
+          pip3 -vvv install ansible molecule[docker] docker
 
       - name: Run Molecule tests.
-        run: molecule test
+        run: |
+          source ~/venv/bin/activate
+          molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
