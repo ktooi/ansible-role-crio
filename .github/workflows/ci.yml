@@ -78,8 +78,9 @@ jobs:
             ~/.cache/pip
             ansible_collections/
             build/
-            /opt/hostedtoolcache/Python/
-          key: ktooi-crio-molecule
+            ${{ env.LD_LIBRARY_PATH }}
+            /home/runner/.cache/molecule/
+          key: ${{ runner.os }}-molecule
 
       - name: Install test dependencies.
         run: pip3 -vvv install ansible molecule[docker] docker
