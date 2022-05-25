@@ -7,3 +7,5 @@
     - overlay
     - br_netfilter
   become: true
+  tags:
+    - molecule-notest
