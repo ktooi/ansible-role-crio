@@ -74,7 +74,11 @@ jobs:
         env:
           cache-name: python-3
         with:
-          path: ~/.cache/pip
+          path: |
+            ~/.cache/pip
+            ansible_collections/
+            build/
+            /opt/hostedtoolcache/Python/
           key: ktooi-crio-molecule
 
       - name: Install test dependencies.
