@@ -5,6 +5,7 @@ crio_sysctl_filename: "/etc/sysctl.d/99-kubernetes-cri.conf"
 
 # For Debian/Ubuntu
 crio_apt_cache_valid_time: 86400
+crio_apt_update_cache: true
 crio_apt_repo: "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os }}/ /"
 crio_apt_repo_filename: "devel:kubic:libcontainers:stable"
 crio_apt_repo_key_url: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os }}/Release.key"

@@ -4,6 +4,7 @@
     name:
       - "gpg-agent"
     cache_valid_time: "{{ crio_apt_cache_valid_time }}"
+    update_cache: "{{ crio_apt_update_cache }}"
     state: present
   become: true
 
