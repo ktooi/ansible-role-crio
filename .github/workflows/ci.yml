@@ -80,7 +80,8 @@ jobs:
             build/
             ${{ env.LD_LIBRARY_PATH }}
             /home/runner/.cache/molecule/
-          key: ${{ runner.os }}-molecule
+          key: ${{ matrix.distro }}-molecule-${{ github.sha }}
+          restore-keys: ${{ matrix.distro }}-molecule-
 
       - name: Install test dependencies.
         run: pip3 -vvv install ansible molecule[docker] docker
