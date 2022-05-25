@@ -5,3 +5,5 @@
     enabled: true
     state: started
   become: true
+  tags:
+    - molecule-notest
