@@ -24,6 +24,6 @@
 - name: Install cri-o
   yum:
     name:
-      - "cri-o-{{ crio_version }}"
+      - "cri-o"
     state: present
   become: true
