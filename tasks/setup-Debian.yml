@@ -2,7 +2,7 @@
 - name: Ensure gpg-agent is installed for the apt_key module
   apt:
     name:
-      - "gpt-agent"
+      - "gpg-agent"
     state: present
   become: true
 
