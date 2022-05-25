@@ -1,5 +1,5 @@
 ---
-- name: Ensure that CRI-O is started
+- name: Ensure CRI-O is started and enabled at boot
   systemd:
     name: crio
     enabled: true
