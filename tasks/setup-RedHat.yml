@@ -5,6 +5,7 @@
     description: "{{ crio_yum_repo_description }}"
     baseurl: "{{ crio_yum_repo_baseurl }}"
     gpgcheck: "{{ crio_yum_repo_gpgcheck }}"
+    gpgkey: "{{ crio_yum_repo_gpgkey }}"
     enabled: "{{ crio_yum_repo_enabled }}"
     file: "{{ crio_yum_repo_filename }}"
     state: present
@@ -16,6 +17,7 @@
     description: "{{ crio_yum_crio_repo_description }}"
     baseurl: "{{ crio_yum_crio_repo_baseurl }}"
     gpgcheck: "{{ crio_yum_crio_repo_gpgcheck }}"
+    gpgkey: "{{ crio_yum_crio_repo_gpgkey }}"
     enabled: "{{ crio_yum_crio_repo_enabled }}"
     file: "{{ crio_yum_crio_repo_filename }}"
     state: present
