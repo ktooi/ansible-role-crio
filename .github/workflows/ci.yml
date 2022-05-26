@@ -77,7 +77,6 @@ jobs:
           path: |
             /home/runner/.cache/molecule/
             ~/venv/
-            /var/lib/docker/
           key: ${{ matrix.distro }}-molecule-${{ github.sha }}
           restore-keys: ${{ matrix.distro }}-molecule-
 
