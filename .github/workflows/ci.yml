@@ -77,7 +77,7 @@ jobs:
           path: |
             /home/runner/.cache/molecule/
             ~/venv/
-            ~/molecule_local/
+            /var/lib/docker/
           key: ${{ matrix.distro }}-molecule-${{ github.sha }}
           restore-keys: ${{ matrix.distro }}-molecule-
 
@@ -92,8 +92,7 @@ jobs:
         run: |
           source ~/venv/bin/activate
           molecule test
-          ls -la ~/
-          find ~/ -type d
+          find / -type d
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
