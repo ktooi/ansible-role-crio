@@ -1,2 +1,4 @@
 ---
 __crio_os: "xUbuntu_20.10"
+__crio_gpg_packages:
+  - gpg-agent

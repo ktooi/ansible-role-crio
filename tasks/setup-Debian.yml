@@ -1,8 +1,7 @@
 ---
 - name: Ensure gpg-agent is installed for the apt_key module
   apt:
-    name:
-      - "gpg-agent"
+    name: "{{ crio_gpg_packages }}"
     cache_valid_time: "{{ crio_apt_cache_valid_time }}"
     update_cache: "{{ crio_apt_update_cache }}"
     state: present

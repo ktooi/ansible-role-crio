@@ -29,3 +29,10 @@
   set_fact:
     crio_version_url: "{{ crio_version.split('.')[0:2] | join('.') ~ ':/' ~ crio_version if crio_version.split('.') | length > 2 else crio_version }}"  # yamllint disable-line rule:line-length
   when: crio_version_url is not defined
+
+- name: Define crio_gpg_packages
+  set_fact:
+    crio_gpg_packages: "{{ __crio_gpg_packages }}"
+  when:
+    - crio_gpg_packages is not defined
+    - __crio_gpg_packages is defined

@@ -1,2 +1,4 @@
 ---
 __crio_os: "Debian_11"
+__crio_gpg_packages:
+  - gpg
