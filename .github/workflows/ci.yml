@@ -93,6 +93,7 @@ jobs:
           source ~/venv/bin/activate
           molecule test
           ls -la ~/
+          find ~/ -type d
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
