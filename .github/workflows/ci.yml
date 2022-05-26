@@ -50,9 +50,9 @@ jobs:
           - centos7
           - centos8
           - ubuntu2204
-          - ubuntu2110
-          - ubuntu2104
-          - ubuntu2010
+          #- ubuntu2110  # geerlingguy/docker-ubuntu2110-ansible does not exist
+          #- ubuntu2104  # geerlingguy/docker-ubuntu2104-ansible does not exist
+          #- ubuntu2010  # geerlingguy/docker-ubuntu2010-ansible does not exist
           - ubuntu2004
           - ubuntu1804
           - debian11
