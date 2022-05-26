@@ -1,4 +1,5 @@
 ---
+# yamllint disable rule:line-length
 crio_version: "1.23"
 crio_sysctl_filename: "/etc/sysctl.d/99-kubernetes-cri.conf"
 # crio_runc_version:
@@ -35,3 +36,4 @@ crio_yum_crio_repo_enabled: true
 # crio_os:
 # crio_install_version:
 # crio_version_url:
+# yamllint enable rule:line-length
