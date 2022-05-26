@@ -76,6 +76,7 @@ jobs:
         with:
           path: |
             /home/runner/.cache/molecule/
+            /home/runner/.ansible/
             ~/venv/
           key: ${{ matrix.distro }}-molecule-${{ github.sha }}
           restore-keys: ${{ matrix.distro }}-molecule-
