@@ -59,7 +59,7 @@ From my research, the currently valid OS specification is as follows.
 |Ubuntu 21.10|xUbuntu_21.10|
 |Ubuntu 22.04|xUbuntu_22.04|
 
-Note that the valid OS depends on the version of CRI-O. The available OS for each version can be found at [/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/ - openSUSE Download](https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/).
+Note that the valid OS depends on the version of CRI-O. The available OS for each version can be found at [openSUSE Download](https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/).
 Select the version of CRI-O you wish to install from [openSUSE Download]() and check the directory name displayed.
 
 If your OS has files under `vars/`, `crio_os` will be set automatically and you do not need to specify it.

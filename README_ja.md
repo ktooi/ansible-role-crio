@@ -59,7 +59,7 @@ OS 毎に指定するべき値は [cri-o のインストール手順](https://cr
 |Ubuntu 21.10|xUbuntu_21.10|
 |Ubuntu 22.04|xUbuntu_22.04|
 
-なお、有効な OS は CRI-O のバージョンによって異なるので、各バージョンごとに利用可能な OS は [/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/ - openSUSE Download](https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/) からインストールしたい CRI-O のバージョンを選択して表示されるディレクトリ名を確認してください。
+なお、有効な OS は CRI-O のバージョンによって異なるので、各バージョンごとに利用可能な OS は [openSUSE Download](https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/) からインストールしたい CRI-O のバージョンを選択して表示されるディレクトリ名を確認してください。
 
 `vars/` 配下にファイルが格納されている OS の場合は、 `crio_os` は自動的に設定されるので指定する必要はありません。
 
