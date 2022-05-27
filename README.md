@@ -74,7 +74,7 @@ It may be in the form ``X.Y`` or ``X.Y:/X.Y.Z``. (e.g., `1.24` or `1.24:/1.24.0`
 You don't need to specify the value of `crio_version`, since it is automatically set from the value of `crio_version`.
 
 ```yaml
-crio_long_version: '1.24'.
+crio_long_version: '1.24'
 ```
 
 This parameter specifies the version of CRI-O in long form.
