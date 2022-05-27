@@ -17,6 +17,8 @@ platforms:
       - ${MOLECULE_DISTRO:-ubuntu2004}
 provisioner:
   name: ansible
+  options:
+    diff: true
   inventory:
     group_vars:
       all: {}
