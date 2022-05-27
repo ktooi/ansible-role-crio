@@ -12,5 +12,5 @@
     default_release: "{{ crio_apt_backports_name }}"
     cache_valid_time: "{{ crio_apt_cache_valid_time }}"
     update_cache: "{{ crio_apt_update_cache }}"
-    upgrade: true
+    upgrade: 'yes'
   become: true
