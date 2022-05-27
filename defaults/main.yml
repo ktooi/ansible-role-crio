@@ -16,6 +16,7 @@ crio_apt_crio_repo_key_url: "https://download.opensuse.org/repositories/devel:ku
 crio_apt_backports_name: "{{ ansible_distribution_release }}-backports"
 crio_apt_backports_repo: "deb http://deb.debian.org/debian {{ crio_apt_backports_name }} main contrib non-free"
 crio_apt_backports_repo_filename: "{{ ansible_distribution_release }}-backports"
+# crio_apt_force_update: []
 # crio_apt_backports_repo_enable: false
 # crio_backports_packages: []
 
