@@ -4,6 +4,8 @@
     - always
 - include_tasks: "modprobe.yml"
 - include_tasks: "kernel_parameters.yml"
+- include_tasks: "configure-backports-repo.yml"
+  when: crio_apt_backports_repo_enable
 - include_tasks: "{{ item }}"
   with_first_found:
     - files:

@@ -36,3 +36,8 @@
   when:
     - crio_gpg_packages is not defined
     - __crio_gpg_packages is defined
+
+- name: Define crio_apt_backports_repo_enable
+  set_fact:
+    crio_apt_backports_repo_enable: "{{ __crio_apt_backports_repo_enable | default(false) }}"
+  when: crio_apt_backports_repo_enable is not defined
