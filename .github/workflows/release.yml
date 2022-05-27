@@ -12,7 +12,15 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+        with:
+          path: ktooi.crio
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
       - name: galaxy
         uses: robertdebock/galaxy-action@1.1.0
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
+          path: ktooi.crio
