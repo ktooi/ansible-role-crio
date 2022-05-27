@@ -44,5 +44,6 @@
     name:
       - "cri-o={{ crio_install_version }}"
       - "cri-o-runc{{ '=' ~ crio_runc_version if crio_runc_version is defined else '' }}"
+    default_release: "{{ crio_apt_backports_name if crio_apt_backports_repo_enable else omit }}"
     state: present
   become: true
