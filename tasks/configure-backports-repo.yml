@@ -6,6 +6,12 @@
     state: present
   become: true
 
+- name: Force apt update at Debian
+  apt:
+    update_cache: true
+  become: true
+  when: ansible_distribution == 'Debian'
+
 - name: Install the dependent packages in the backports repository
   apt:
     name: "{{ crio_backports_packages | product([crio_apt_backports_name]) | map('join', '/') }}"
