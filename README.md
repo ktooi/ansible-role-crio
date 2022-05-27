@@ -43,7 +43,7 @@ Specifies the OS of the host on which to install.
 The value to specify for each OS is the value of `$OS` as described in [cri-o installation instructions](https://cri-o.io/), but as of May 2022, the linked information seems to be out of date.
 From my research, the currently valid OS specification is as follows.
 
-|Operating system|``$OS` (`crio_os`)|
+|Operating system|`$OS` (`crio_os`)|
 |---|---|
 |CentOS 7|CentOS_7|
 |CentOS 8|CentOS_8|
