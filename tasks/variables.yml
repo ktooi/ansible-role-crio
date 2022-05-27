@@ -41,3 +41,8 @@
   set_fact:
     crio_apt_backports_repo_enable: "{{ __crio_apt_backports_repo_enable | default(false) }}"
   when: crio_apt_backports_repo_enable is not defined
+
+- name: Define crio_backports_packages
+  set_fact:
+    crio_backports_packages: "{{ __crio_backports_packages | default([]) }}"
+  when: crio_backports_packages is not defined

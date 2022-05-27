@@ -13,9 +13,11 @@ crio_apt_repo_key_url: "https://download.opensuse.org/repositories/devel:/kubic:
 crio_apt_crio_repo: "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ crio_version_url }}/{{ crio_os }}/ /"
 crio_apt_crio_repo_filename: "devel:kubic:libcontainers:stable:cri-o:{{ crio_version }}"
 crio_apt_crio_repo_key_url: "https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:{{ crio_version_url }}/{{ crio_os }}/Release.key"
-crio_apt_backports_repo: "deb http://deb.debian.org/debian {{ ansible_distribution_release }}-backports main contrib non-free"
+crio_apt_backports_name: "{{ ansible_distribution_release }}-backports "
+crio_apt_backports_repo: "deb http://deb.debian.org/debian {{ crio_apt_backports_name }} main contrib non-free"
 crio_apt_backports_repo_filename: "{{ ansible_distribution_release }}-backports"
 # crio_apt_backports_repo_enable: false
+# crio_backports_packages: []
 
 # For RHEL/CentOS
 crio_yum_repo_filename: "devel:kubic:libcontainers:stable"

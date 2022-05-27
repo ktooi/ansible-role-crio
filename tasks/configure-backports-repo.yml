@@ -5,3 +5,10 @@
     filename: "{{ crio_apt_backports_repo_filename }}"
     state: present
   become: true
+
+- name: Install the dependent packages in the backports repository
+  apt:
+    name: "{{ crio_backports_packages | product([crio_apt_backports_name]) | map('join', '/') }}"
+    cache_valid_time: "{{ crio_apt_cache_valid_time }}"
+    update_cache: "{{ crio_apt_update_cache }}"
+  become: true
