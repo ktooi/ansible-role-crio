@@ -9,7 +9,11 @@
 - name: Force apt update at Debian
   command: "apt update"
   become: true
+  register: apt_update
   when: ansible_distribution == 'Debian'
+
+- debug:
+    msg: "{{ apt_update }}"
 
 - name: Install the dependent packages in the backports repository
   apt:
