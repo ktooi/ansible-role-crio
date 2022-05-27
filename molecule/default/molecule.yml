@@ -20,5 +20,9 @@ provisioner:
   inventory:
     group_vars:
       all: {}
+      debian10:
+        cache_valid_time: 0
+      debian11:
+        cache_valid_time: 0
 verifier:
   name: ansible
