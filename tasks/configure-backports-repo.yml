@@ -1,6 +1,6 @@
 ---
 - name: Add backports repository
-  apt_repo:
+  apt_repository:
     repo: "{{ crio_apt_backports_repo }}"
     filename: "{{ crio_apt_backports_repo_filename }}"
     state: present
