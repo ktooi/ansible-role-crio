@@ -1,4 +1,10 @@
 ---
+- name: Force apt update at Debian
+  apt:
+    update_cache: true
+  become: true
+  when: ansible_distribution == 'Debian'
+
 - name: Ensure gpg-agent is installed for the apt_key module
   apt:
     name: "{{ crio_gpg_packages }}"
