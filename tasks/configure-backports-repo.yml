@@ -6,19 +6,11 @@
     state: present
   become: true
 
-- name: Force apt update at Debian
-  command: "apt update"
-  become: true
-  register: apt_update
-  when: ansible_distribution == 'Debian'
-
-- debug:
-    msg: "{{ apt_update }}"
-
 - name: Install the dependent packages in the backports repository
   apt:
     name: "{{ crio_backports_packages }}"
     default_release: "{{ crio_apt_backports_name }}"
     cache_valid_time: "{{ crio_apt_cache_valid_time }}"
     update_cache: "{{ crio_apt_update_cache }}"
+    upgrade: true
   become: true
