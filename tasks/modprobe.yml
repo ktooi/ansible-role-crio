@@ -3,9 +3,16 @@
   modprobe:
     name: "{{ item }}"
     state: present
-  with_items:
-    - overlay
-    - br_netfilter
+  with_items: "{{ crio_modules }}"
   become: true
   tags:
     - molecule-notest
+
+- name: Persistent kernel module loading.
+  template:
+    src: crio-modules.conf.j2
+    dest: "{{ crio_modprobe_filename }}"
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
