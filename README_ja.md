@@ -89,7 +89,7 @@ None.
 ## Example Playbook
 
 ```yaml
-- hosts: crio-servers
+- hosts: crio_servers
   roles:
     - ktooi.crio
 ```
