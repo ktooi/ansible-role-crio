@@ -21,7 +21,7 @@ RHEL/CentOS, Debian/Ubuntu サーバに CRI-O をインストールします。
 ## Role Variables
 
 ```yaml
-crio_version: "1.23"
+crio_version: "1.24"
 ```
 
 インストールする CRI-O のバージョンを指定します。

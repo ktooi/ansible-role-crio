@@ -21,7 +21,7 @@ There are no special requirements for this role.
 ## Role Variables
 
 ```yaml
-crio_version: "1.23"
+crio_version: "1.24"
 ````
 
 Specifies the version of CRI-O to install.
