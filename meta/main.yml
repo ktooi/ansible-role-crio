@@ -29,4 +29,4 @@ galaxy_info:
         - 'bullseye'  # 11
   galaxy_tags:
     - crio
-    - cri-o
+    - cri_o
