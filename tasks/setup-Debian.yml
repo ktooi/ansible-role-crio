@@ -23,7 +23,9 @@
   apt_repository:
     repo: "{{ crio_apt_repo }}"
     filename: "{{ crio_apt_repo_filename }}"
+    update_cache: false
     state: present
+  register: utils_repo
   become: true
 
 - name: Add an apt key of cri-o
@@ -36,8 +38,16 @@
   apt_repository:
     repo: "{{ crio_apt_crio_repo }}"
     filename: "{{ crio_apt_crio_repo_filename }}"
+    update_cache: false
     state: present
+  register: crio_repo
   become: true
+
+- name: Update apt cache when needed
+  apt:
+    update_cache: true
+  become: true
+  when: utils_repo.changed or crio_repo.changed
 
 - name: Install cri-o
   apt:
@@ -45,5 +55,7 @@
       - "cri-o={{ crio_install_version }}"
       - "cri-o-runc{{ '=' ~ crio_runc_version if crio_runc_version is defined else '' }}"
     default_release: "{{ crio_apt_backports_name if crio_apt_backports_repo_enable else omit }}"
+    cache_valid_time: "{{ crio_apt_cache_valid_time }}"
+    update_cache: "{{ crio_apt_update_cache }}"
     state: present
   become: true
