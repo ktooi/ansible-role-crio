@@ -49,11 +49,11 @@ From my research, the currently valid OS specification is as follows.
 |CentOS 8|CentOS_8|
 |CentOS 8 Stream|CentOS_8_Stream|
 |Debian 10|Debian_10|
-|CentOS 8 Stream|CentOS_8_Stream|CentOS 10|Debian_10|Debian 11|Debian_11|
-|CentOS 8 Stream|CentOS_8_Stream|Debian 10|Debian_10|Debian 11|Debian_11|
+|Debian 11|Debian_11|
+|Fedora 35|Fedora_35|
 |Fedora Rawhide|Fedora_Rawhide|
 |Raspbian 10|Raspbian_10|
-|Raspbian 10|Raspbian_10||Raspbian 11|Raspbian_11|
+|Raspbian 11|Raspbian_11|
 |Ubuntu 18.04|xUbuntu_18.04|
 |Ubuntu 20.04|xUbuntu_20.04|
 |Ubuntu 21.10|xUbuntu_21.10|
