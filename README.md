@@ -1,5 +1,7 @@
 [![CI](https://github.com/ktooi/ansible-role-crio/workflows/CI/badge.svg)](https://github.com/ktooi/ansible-role-crio/actions?query=workflow%3ACI+branch%3Amain)
 
+日本語版は[こちら](README_ja.md)。
+
 # Ansible Role: crio
 
 Install CRI-O on a RHEL/CentOS or Debian/Ubuntu server.
