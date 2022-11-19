@@ -30,13 +30,6 @@
     crio_version_url: "{{ crio_version.split('.')[0:2] | join('.') ~ ':/' ~ crio_version if crio_version.split('.') | length > 2 else crio_version }}"  # yamllint disable-line rule:line-length
   when: crio_version_url is not defined
 
-- name: Define crio_gpg_packages
-  set_fact:
-    crio_gpg_packages: "{{ __crio_gpg_packages }}"
-  when:
-    - crio_gpg_packages is not defined
-    - __crio_gpg_packages is defined
-
 - name: Define crio_apt_backports_repo_enable
   set_fact:
     crio_apt_backports_repo_enable: "{{ __crio_apt_backports_repo_enable | default(false) }}"
@@ -46,8 +39,3 @@
   set_fact:
     crio_backports_packages: "{{ __crio_backports_packages | default([]) }}"
   when: crio_backports_packages is not defined
-
-- name: Define crio_apt_force_update
-  set_fact:
-    crio_apt_force_update: "{{ __crio_apt_force_update | default(false) }}"
-  when: crio_apt_force_update is not defined
