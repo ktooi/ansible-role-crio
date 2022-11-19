@@ -11,16 +11,18 @@ crio_modprobe_filename: "/etc/modules-load.d/crio-modules.conf"
 # For Debian/Ubuntu
 crio_apt_cache_valid_time: 86400
 crio_apt_update_cache: true
-crio_apt_repo: "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os }}/ /"
+crio_apt_keyrings_dir: "/etc/apt/keyrings"
+crio_apt_repo: "deb [signed-by={{ crio_apt_repo_key_dest }}] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os }}/ /"
 crio_apt_repo_filename: "devel:kubic:libcontainers:stable"
 crio_apt_repo_key_url: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ crio_os }}/Release.key"
-crio_apt_crio_repo: "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ crio_version_url }}/{{ crio_os }}/ /"
+crio_apt_repo_key_dest: "{{ crio_apt_keyrings_dir }}/{{ crio_apt_repo_filename | regex_replace(':', '_') }}.asc"
+crio_apt_crio_repo: "deb [signed-by={{ crio_apt_crio_repo_key_dest }}] http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ crio_version_url }}/{{ crio_os }}/ /"
 crio_apt_crio_repo_filename: "devel:kubic:libcontainers:stable:cri-o:{{ crio_version }}"
+crio_apt_crio_repo_key_dest: "{{ crio_apt_keyrings_dir }}/{{ crio_apt_crio_repo_filename | regex_replace(':', '_') }}.asc"
 crio_apt_crio_repo_key_url: "https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:{{ crio_version_url }}/{{ crio_os }}/Release.key"
 crio_apt_backports_name: "{{ ansible_distribution_release }}-backports"
 crio_apt_backports_repo: "deb http://deb.debian.org/debian {{ crio_apt_backports_name }} main contrib non-free"
 crio_apt_backports_repo_filename: "{{ ansible_distribution_release }}-backports"
-# crio_apt_force_update: []
 # crio_apt_backports_repo_enable: false
 # crio_backports_packages: []
 
