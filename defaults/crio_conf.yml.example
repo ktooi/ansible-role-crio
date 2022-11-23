@@ -1,0 +1,44 @@
+---
+crio_conf:
+  "crio":
+    root: "/home/abuild/.local/share/containers/storage"
+    runroot: "/tmp/containers-user-399/containers"
+    storage_driver: vfs
+    storage_option: []
+    log_dir: "/var/log/crio/pods"
+    version_file: "/var/run/crio/version"
+    version_file_persist: "/var/lib/crio/version"
+    internal_wipe: true
+    clean_shutdown_file: "/var/lib/crio/clean.shutdown"
+  "crio.metrics":
+    enable_metrics: false
+    metrics_collectors:
+      - "operations"
+      - "operations_latency_microseconds_total"
+      - "operations_latency_microseconds"
+      - "operations_errors"
+      - "image_pulls_by_digest"
+      - "image_pulls_by_name"
+      - "image_pulls_by_name_skipped"
+      - "image_pulls_failures"
+      - "image_pulls_successes"
+      - "image_pulls_layer_size"
+      - "image_layer_reuse"
+      - "containers_oom_total"
+      - "containers_oom"
+      - "processes_defunct"
+      - "operations_total"
+      - "operations_latency_seconds"
+      - "operations_latency_seconds_total"
+      - "operations_errors_total"
+      - "image_pulls_bytes_total"
+      - "image_pulls_skipped_bytes_total"
+      - "image_pulls_failure_total"
+      - "image_pulls_success_total"
+      - "image_layer_reuse_total"
+      - "containers_oom_count_total"
+    metrics_port: 9090
+    metrics_socket: ""
+    metrics_cert: ""
+    metrics_key: ""
+

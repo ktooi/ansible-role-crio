@@ -11,9 +11,6 @@ RHEL/CentOS, Debian/Ubuntu サーバに CRI-O をインストールします。
 * Kernel module のロード。
 * Kernel parameter の設定。
 * CRI-O をインストール。
-
-この role では次のことを行いません。
-
 * CRI-O の設定。
 
 ## Requirements
@@ -83,6 +80,41 @@ CRI-O のバージョンを長い形式で指定するパラメータです。
 `crio_version_url` と似たような形式になりますが、 `/` の有無が異なります。
 
 `crio_version` の値から自動的に設定されるので指定する必要はありません。
+
+```yaml
+crio_conf: {}
+```
+
+crio.conf の内容を指定するパラメータです。
+crio.conf に指定可能なパラメータは https://github.com/cri-o/cri-o/blob/main/docs/crio.conf.5.md を参照してください。
+
+`crio_conf` は次のように指定可能です。
+
+```yaml
+crio_conf:
+  "table":
+    option: value
+  "table.subtable1":
+    option: value
+  "table.subtable2":
+    option: value
+```
+
+この場合、 crio.conf は次のように出力されます。
+
+```
+[table]
+option = value
+
+[table.subtable1]
+option = value
+
+[table.subtable2]
+option = value
+
+```
+
+より実例に近い指定については、 [crio_conf.yml.example](./defaults/crio_conf.yml.example) を参照してください。
 
 ## Dependencies
 

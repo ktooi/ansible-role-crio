@@ -7,6 +7,9 @@ crio_modules:
   - br_netfilter
 crio_modprobe_filename: "/etc/modules-load.d/crio-modules.conf"
 # crio_runc_version:
+crio_conf_file: "/etc/crio/crio.conf"
+# See also crio_conf.yml.example for more information on configuring crio_conf.
+# crio_conf: {}
 
 # For Debian/Ubuntu
 crio_apt_cache_valid_time: 86400

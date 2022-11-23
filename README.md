@@ -11,9 +11,6 @@ This role will do the following.
 * Load Kernel module.
 * Configure Kernel parameters.
 * Install CRI-O.
-
-This role does not do the following
-
 * Configure CRI-O.
 
 ## Requirements
@@ -84,6 +81,41 @@ It is specified in either `X.Y` or `X.Y:X.Y.Z` format. (e.g., `1.24` or `1.24:1.
 The format is similar to `crio_version_url`, but with or without `/`.
 
 It is automatically set from the value of `crio_version`, so you don't need to specify it.
+
+```yaml
+crio_conf: {}
+```
+
+This parameter specifies the contents of crio.conf.
+See https://github.com/cri-o/cri-o/blob/main/docs/crio.conf.5.md for parameters that can be specified in crio.conf.
+
+`crio_conf` can be specified as follows:
+
+```yaml
+crio_conf:
+  "table":
+    option: value
+  "table.subtable1":
+    option: value
+  "table.subtable2":
+    option: value
+```
+
+In this case, crio.conf outputs the following:
+
+```
+[table]
+option = value
+
+[table.subtable1]
+option = value
+
+[table.subtable2]
+option = value
+
+```
+
+See [crio_conf.yml.example](./defaults/crio_conf.yml.example) for a more realistic specificatioin.
 
 ## Dependencies
 

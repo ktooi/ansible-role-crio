@@ -1,0 +1,24 @@
+{% for section, options in crio_conf.items() %}
+[{{ section }}]
+{% for key, val in options.items() %}
+{{ key }} =
+{%- if val is string %}
+ "{{ val }}"
+{% elif val is iterable and var is not mapping %}
+ [
+{% for v in val %}
+{% if v is string %}
+     "{{ v }}",
+{% else %}
+     {{ v }},
+{% endif %}
+{% endfor %}
+]
+{% elif val is boolean %}
+ {{ val | string | lower }}
+{% else %}
+ {{ val }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}
