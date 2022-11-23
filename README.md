@@ -106,10 +106,13 @@ In this case, crio.conf outputs the following:
 ```
 [table]
 option = value
+
 [table.subtable1]
 option = value
+
 [table.subtable2]
 option = value
+
 ```
 
 See [crio_conf.yml.example](./defaults/crio_conf.yml.example) for a more realistic specificatioin.

@@ -105,10 +105,13 @@ crio_conf:
 ```
 [table]
 option = value
+
 [table.subtable1]
 option = value
+
 [table.subtable2]
 option = value
+
 ```
 
 より実例に近い指定については、 [crio_conf.yml.example](./defaults/crio_conf.yml.example) を参照してください。
