@@ -117,6 +117,14 @@ option = value
 
 See [crio_conf.yml.example](./defaults/crio_conf.yml.example) for a more realistic specificatioin.
 
+## Role Tags
+
+### crio-repo-key
+
+The `crio-repo-key` tag can be used to update keys used in the CRI-O apt repository.
+
+It does not perform tasks such as updating the apt repository cache, updating CRI-O packages, or changing settings. Use this function only for updating keys, such as when a key has expired.
+
 ## Dependencies
 
 None.

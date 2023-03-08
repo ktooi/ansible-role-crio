@@ -116,6 +116,14 @@ option = value
 
 より実例に近い指定については、 [crio_conf.yml.example](./defaults/crio_conf.yml.example) を参照してください。
 
+## Role Tags
+
+### crio-repo-key
+
+`crio-repo-key` タグを利用することで、 CRI-O の apt リポジトリで使用する key の更新を行うことができます。
+
+apt リポジトリのキャッシュの更新や、 CRI-O のパッケージ更新、設定変更等のタスクは実行しません。 key の有効期限が切れた場合など、 key の更新のみを実行する際に利用してください。
+
 ## Dependencies
 
 None.
