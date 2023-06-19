@@ -19,8 +19,6 @@
     - name: Execute systemctl daemon-reload
       ansible.builtin.systemd:
         daemon_reload: true
-    - name: Ensure can access to Internet
-      ansible.builtin.command: "ping -c5 google.com"
     - name: 
       ansible.builtin.command: "cat /etc/resolv.conf"
       ignore_errors: true
