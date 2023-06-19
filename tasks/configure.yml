@@ -7,8 +7,6 @@
     group: root
     mode: "0644"
   when: crio_conf is defined
-  # Skip the handler because CRI-O cannot be executed in the molecule environment.
-  notify: "{{ 'Restart CRI-O' if molecule_yml is not defined else omit }}"
   become: true
 
 - name: Ensure CRI-O is started and enabled at boot
@@ -17,5 +15,3 @@
     enabled: true
     state: started
   become: true
-  tags:
-    - molecule-notest
