@@ -19,16 +19,23 @@
     - name: Execute systemctl daemon-reload
       ansible.builtin.systemd:
         daemon_reload: true
-- name: Prepare tasks
-  hosts: rockylinux9
-  gather_facts: false
-  tasks:
-    - name: Set resolv.conf
-      ansible.builtin.copy:
-        dest: /etc/resolv.conf
-        content: |
-          nameserver 8.8.8.8
-          nameserver 8.8.4.4
-        owner: root
-        group: root
-        mode: "0644"
+    - name: 
+      ansible.builtin.command: "cat /etc/resolv.conf"
+      ignore_errors: true
+      register: resolv_conf
+    - name: 
+      ansible.builtin.debug:
+        msg: "{{ resolv_conf.stdout }}"
+        #- name: Prepare tasks
+        #  hosts: rockylinux9
+        #  gather_facts: false
+        #  tasks:
+        #    - name: Set resolv.conf
+        #      ansible.builtin.copy:
+        #        dest: /etc/resolv.conf
+        #        content: |
+        #          nameserver 8.8.8.8
+        #          nameserver 8.8.4.4
+        #        owner: root
+        #        group: root
+        #        mode: "0644"
