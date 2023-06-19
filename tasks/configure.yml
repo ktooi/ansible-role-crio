@@ -14,4 +14,8 @@
     name: crio
     enabled: true
     state: started
+  ignore_errors: true
   become: true
+
+- name: Show logs
+  ansible.builtin.command: "journalctl -xeu crio.service"
