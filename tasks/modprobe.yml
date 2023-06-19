@@ -1,13 +1,4 @@
 ---
-- name: Ensure /etc/modules-load.d directory is exists
-  ansible.builtin.file:
-    path: /etc/modules-load.d
-    owner: root
-    group: root
-    mode: "0755"
-    state: directory
-  become: true
-
 - name: Load kernel modules.
   modprobe:
     name: "{{ item }}"

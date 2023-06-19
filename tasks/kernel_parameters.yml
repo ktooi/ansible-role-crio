@@ -1,13 +1,4 @@
 ---
-- name: Ensure /etc/sysctl.d directory is exists
-  ansible.builtin.file:
-    path: /etc/sysctl.d
-    owner: root
-    group: root
-    mode: "0755"
-    state: directory
-  become: true
-
 - name: Set sysctl parameters
   sysctl:
     name: "{{ item.name }}"
