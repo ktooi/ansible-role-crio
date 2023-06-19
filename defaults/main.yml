@@ -1,6 +1,6 @@
 ---
 # yamllint disable rule:line-length
-crio_version: "1.24"
+crio_version: "1.27"
 crio_sysctl_filename: "/etc/sysctl.d/99-kubernetes-cri.conf"
 crio_modules:
   - overlay

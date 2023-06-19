@@ -20,7 +20,7 @@ RHEL/CentOS, Debian/Ubuntu サーバに CRI-O をインストールします。
 ## Role Variables
 
 ```yaml
-crio_version: "1.24"
+crio_version: "1.27"
 ```
 
 インストールする CRI-O のバージョンを指定します。
@@ -47,9 +47,11 @@ OS 毎に指定するべき値は [cri-o のインストール手順](https://cr
 |CentOS 7|CentOS_7|
 |CentOS 8|CentOS_8|
 |CentOS 8 Stream|CentOS_8_Stream|
+|CentOS 9 Stream|CentOS_9_Stream|
 |Debian 10|Debian_10|
 |Debian 11|Debian_11|
-|Fedora 35|Fedora_35|
+|Fedora 36|Fedora_36|
+|Fedora 37|Fedora_37|
 |Fedora Rawhide|Fedora_Rawhide|
 |Raspbian 10|Raspbian_10|
 |Raspbian 11|Raspbian_11|
@@ -63,20 +65,20 @@ OS 毎に指定するべき値は [cri-o のインストール手順](https://cr
 `vars/` 配下にファイルが格納されている OS の場合は、 `crio_os` は自動的に設定されるので指定する必要はありません。
 
 ```yaml
-crio_version_url: '1.24'
+crio_version_url: '1.27'
 ```
 
 CRI-O のリポジトリの URL の一部として利用するパラメータです。
-`X.Y` もしくは `X.Y:/X.Y.Z` のどちらかの形式で指定されます。 (e.g., `1.24` もしくは `1.24:/1.24.0`)
+`X.Y` もしくは `X.Y:/X.Y.Z` のどちらかの形式で指定されます。 (e.g., `1.27` もしくは `1.27:/1.27.0`)
 
 `crio_version` の値から自動的に設定されるので指定する必要はありません。
 
 ```yaml
-crio_long_version: '1.24'
+crio_long_version: '1.27'
 ```
 
 CRI-O のバージョンを長い形式で指定するパラメータです。
-`X.Y` もしくは `X.Y:X.Y.Z` のどちらかの形式で指定されます。 (e.g., `1.24` もしくは `1.24:1.24.0`)
+`X.Y` もしくは `X.Y:X.Y.Z` のどちらかの形式で指定されます。 (e.g., `1.27` もしくは `1.27:1.27.0`)
 `crio_version_url` と似たような形式になりますが、 `/` の有無が異なります。
 
 `crio_version` の値から自動的に設定されるので指定する必要はありません。

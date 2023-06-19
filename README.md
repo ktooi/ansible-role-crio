@@ -20,7 +20,7 @@ There are no special requirements for this role.
 ## Role Variables
 
 ```yaml
-crio_version: "1.24"
+crio_version: "1.27"
 ````
 
 Specifies the version of CRI-O to install.
@@ -47,9 +47,11 @@ From my research, the currently valid OS specification is as follows.
 |CentOS 7|CentOS_7|
 |CentOS 8|CentOS_8|
 |CentOS 8 Stream|CentOS_8_Stream|
+|CentOS 9 Stream|CentOS_9_Stream|
 |Debian 10|Debian_10|
 |Debian 11|Debian_11|
-|Fedora 35|Fedora_35|
+|Fedora 36|Fedora_36|
+|Fedora 37|Fedora_37|
 |Fedora Rawhide|Fedora_Rawhide|
 |Raspbian 10|Raspbian_10|
 |Raspbian 11|Raspbian_11|
@@ -64,20 +66,20 @@ Select the version of CRI-O you wish to install from [openSUSE Download](https:/
 If your OS has files under `vars/`, `crio_os` will be set automatically and you do not need to specify it.
 
 ```yaml
-crio_version_url: '1.24'
+crio_version_url: '1.27'
 ```
 
 This parameter is used as part of the URL of the CRI-O repository.
-It may be in the form ``X.Y`` or ``X.Y:/X.Y.Z``. (e.g., `1.24` or `1.24:/1.24.0`)
+It may be in the form ``X.Y`` or ``X.Y:/X.Y.Z``. (e.g., `1.27` or `1.27:/1.27.0`)
 
 You don't need to specify the value of `crio_version`, since it is automatically set from the value of `crio_version`.
 
 ```yaml
-crio_long_version: '1.24'
+crio_long_version: '1.27'
 ```
 
 This parameter specifies the version of CRI-O in long form.
-It is specified in either `X.Y` or `X.Y:X.Y.Z` format. (e.g., `1.24` or `1.24:1.24.0`)
+It is specified in either `X.Y` or `X.Y:X.Y.Z` format. (e.g., `1.27` or `1.27:1.27.0`)
 The format is similar to `crio_version_url`, but with or without `/`.
 
 It is automatically set from the value of `crio_version`, so you don't need to specify it.
