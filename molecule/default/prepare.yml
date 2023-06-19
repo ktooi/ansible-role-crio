@@ -1,0 +1,34 @@
+---
+- name: Prepare tasks
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ensure /etc/modules-load.d directory is exists
+      ansible.builtin.file:
+        path: /etc/modules-load.d
+        state: directory
+    - name: Ensure /etc/sysctl.d directory is exists
+      ansible.builtin.file:
+        path: /etc/sysctl.d
+        state: directory
+    - name: Ensure /usr/share/man/man1/ is exists
+      ansible.builtin.file:
+        name: /usr/share/man/man1/
+        recurse: true
+        state: directory
+    - name: Execute systemctl daemon-reload
+      ansible.builtin.systemd:
+        daemon_reload: true
+- name: Prepare tasks
+  hosts: rockylinux9
+  gather_facts: false
+  tasks:
+    - name: Set resolv.conf
+      ansible.builtin.copy:
+        dest: /etc/resolv.conf
+        content: |
+          nameserver 8.8.8.8
+          nameserver 8.8.4.4
+        owner: root
+        group: root
+        mode: "0644"
