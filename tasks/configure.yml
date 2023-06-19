@@ -19,3 +19,7 @@
 
 - name: Show logs
   ansible.builtin.command: "journalctl -xeu crio.service"
+  register: crio_log
+
+- debug:
+    msg: crio_log.stdout
