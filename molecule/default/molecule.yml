@@ -14,8 +14,9 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
       - /var/lib/containerd
-      - /run/containers/storage
-      - /var/lib/containers/storage
+      # Specify according to the parameters in /etc/containers/storage.conf.
+      - /run/containers/storage  # runroot
+      - /var/lib/containers/storage  # graphroot
     cgroupns_mode: host
     groups:
       - ${MOLECULE_DISTRO:-ubuntu2004}

@@ -3,3 +3,4 @@ __crio_os: "Debian_10"
 __crio_backports_packages:
   - libseccomp2
 __crio_apt_backports_repo_enable: true
+__crio_systemctl_daemon_reload: true
