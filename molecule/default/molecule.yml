@@ -26,5 +26,7 @@ provisioner:
         cache_valid_time: 0
       debian11:
         cache_valid_time: 0
+      ubuntu2204:
+        ansible_remote_tmp: /tmp
 verifier:
   name: ansible
