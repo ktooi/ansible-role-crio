@@ -51,3 +51,10 @@
   when: crio_backports_packages is not defined
   tags:
     - always
+
+- name: Define crio_systemctl_daemon_reload
+  set_fact:
+    crio_systemctl_daemon_reload: "{{ __crio_systemctl_daemon_reload | default(false) }}"
+  when: crio_systemctl_daemon_reload is not defined
+  tags:
+    - always
