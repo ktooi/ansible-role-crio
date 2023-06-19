@@ -22,4 +22,4 @@
   register: crio_log
 
 - debug:
-    msg: crio_log.stdout
+    msg: "{{ crio_log.stdout }}"
