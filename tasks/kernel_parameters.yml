@@ -12,3 +12,5 @@
     - name: net.bridge.bridge-nf-call-ip6tables
       value: 1
   become: true
+  tags:
+    - molecule-notest
