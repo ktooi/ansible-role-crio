@@ -1,0 +1,22 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Install python3-dnf for Rocky Linux and Fedora
+      raw: |
+        if command -v dnf >/dev/null 2>&1; then
+          dnf install -y python3-dnf python3-libdnf
+        elif command -v yum >/dev/null 2>&1; then
+          yum install -y python3-dnf python3-libdnf
+        fi
+      when: inventory_hostname in groups.get('rockylinux8', []) or inventory_hostname in groups.get('rockylinux9', []) or inventory_hostname in groups.get('fedora38', []) or inventory_hostname in groups.get('fedora39', [])
+      changed_when: false
+
+    - name: Update apt cache for Debian-based systems
+      raw: apt-get update
+      when: inventory_hostname in groups.get('debian10', []) or inventory_hostname in groups.get('debian11', []) or inventory_hostname in groups.get('debian12', []) or inventory_hostname in groups.get('ubuntu2004', []) or inventory_hostname in groups.get('ubuntu2204', [])
+      changed_when: false
+
+    - name: Gather facts after preparation
+      setup:
