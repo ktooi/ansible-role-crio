@@ -1,0 +1,4 @@
+---
+__crio_os: "Debian_12"
+__crio_apt_backports_repo_enable: false
+__crio_backports_packages: []
