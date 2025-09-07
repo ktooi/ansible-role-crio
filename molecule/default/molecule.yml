@@ -37,11 +37,11 @@ provisioner:
       rockylinux8:
         ansible_remote_tmp: /tmp
         ansible_become_method: su
-        ansible_python_interpreter: auto_legacy_silent
+        ansible_python_interpreter: /usr/bin/python3
       rockylinux9:
         ansible_remote_tmp: /tmp
         ansible_become_method: su
-        ansible_python_interpreter: auto_legacy_silent
+        ansible_python_interpreter: /usr/bin/python3
       fedora38:
         ansible_remote_tmp: /tmp
         ansible_become_method: su
