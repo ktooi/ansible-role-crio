@@ -5,7 +5,7 @@
 
 # Ansible Role: CRI-O
 
-An Ansible role to install and configure CRI-O (Container Runtime Interface for OCI) on RHEL/CentOS, Debian/Ubuntu, and Fedora systems.
+An Ansible role to install and configure CRI-O (Container Runtime Interface for OCI) on RHEL/Rocky Linux, Debian/Ubuntu, and Fedora systems.
 
 ## Overview
 
@@ -13,7 +13,7 @@ This role automates the installation and configuration of CRI-O, providing a lig
 
 ### Features
 
-- **Multi-OS Support**: RHEL/CentOS, Debian/Ubuntu, Fedora, and Raspbian
+- **Multi-OS Support**: RHEL/Rocky Linux, Debian/Ubuntu, Fedora, and Raspbian
 - **Flexible Version Management**: Support for multiple CRI-O versions
 - **Kernel Configuration**: Automatic kernel module loading and parameter tuning
 - **Repository Management**: Automated repository setup and key management
@@ -56,10 +56,11 @@ The following operating systems are supported with CRI-O 1.28:
 
 | Operating System | `crio_os` Value | Status |
 |---|---|---|
-| CentOS 7 | `CentOS_7` | ✅ Supported |
-| CentOS 8 | `CentOS_8` | ✅ Supported |
-| CentOS 8 Stream | `CentOS_8_Stream` | ✅ Supported |
+| Rocky Linux 8 | `CentOS_8` | ✅ Supported |
+| Rocky Linux 9 | `CentOS_9` | ✅ Supported |
 | CentOS 9 Stream | `CentOS_9_Stream` | ✅ Supported |
+| Red Hat Enterprise Linux 8 | `CentOS_8` | ✅ Supported |
+| Red Hat Enterprise Linux 9 | `CentOS_9` | ✅ Supported |
 | Debian 10 | `Debian_10` | ✅ Supported |
 | Debian 11 | `Debian_11` | ✅ Supported |
 | Debian 12 | `Debian_12` | ✅ Supported |
@@ -70,10 +71,19 @@ The following operating systems are supported with CRI-O 1.28:
 | Fedora Rawhide | `Fedora_Rawhide` | ✅ Supported |
 | Raspbian 10 | `Raspbian_10` | ✅ Supported |
 | Raspbian 11 | `Raspbian_11` | ✅ Supported |
-| Ubuntu 18.04 | `xUbuntu_18.04` | ✅ Supported |
 | Ubuntu 20.04 | `xUbuntu_20.04` | ✅ Supported |
-| Ubuntu 21.10 | `xUbuntu_21.10` | ✅ Supported |
 | Ubuntu 22.04 | `xUbuntu_22.04` | ✅ Supported |
+
+### Legacy Operating Systems (No longer supported)
+
+The following operating systems are no longer supported due to end-of-life status:
+
+| Operating System | `crio_os` Value | Status |
+|---|---|---|
+| CentOS 7 | `CentOS_7` | ❌ EOL (June 2024) |
+| CentOS 8 | `CentOS_8` | ❌ EOL (December 2021) |
+| Ubuntu 18.04 | `xUbuntu_18.04` | ❌ EOL (April 2023) |
+| Ubuntu 21.10 | `xUbuntu_21.10` | ❌ EOL (July 2022) |
 
 > **Note**: Available OS support depends on the CRI-O version. Check the [openSUSE Build Service](https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/) for version-specific OS availability.
 
