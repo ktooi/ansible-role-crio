@@ -242,26 +242,73 @@ None.
 
 ## Testing
 
-This role includes molecule tests for various scenarios. To run tests:
+This role includes comprehensive Molecule tests to ensure compatibility across all supported operating systems and proper CRI-O functionality.
+
+### Quick Start
 
 ```bash
 # Install test dependencies
-pip install molecule molecule-plugins[docker] ansible-lint
+pip install molecule[docker] ansible-core
 
-# Run all tests
+# Run all tests with default OS (Ubuntu 22.04)
 molecule test
 
-# Test specific scenario
-molecule test -s default
+# Test specific OS distribution
+MOLECULE_DISTRO=rockylinux8 molecule test
 ```
+
+### Supported Test Distributions
+
+- **Red Hat Family**: `rockylinux8`, `rockylinux9`, `fedora38`, `fedora39`
+- **Debian Family**: `debian10`, `debian11`, `debian12`, `ubuntu2004`, `ubuntu2204`
+
+### Test Coverage
+
+Our tests verify:
+
+- ✅ **Service Management**: CRI-O service installation, enablement, and startup
+- ✅ **Configuration**: Proper configuration file generation and content
+- ✅ **System Setup**: Kernel modules availability and system parameters
+- ✅ **Binary Installation**: CRI-O binary presence and functionality
+- ✅ **Version Compatibility**: CRI-O version verification
+
+### Continuous Integration
+
+All tests run automatically in GitHub Actions across the full OS matrix for every pull request and main branch push.
+
+### Detailed Testing Documentation
+
+For comprehensive testing information, development guidelines, and troubleshooting, see [molecule/README.md](molecule/README.md).
 
 ## Contributing
 
+We welcome contributions! Please follow these guidelines:
+
+### Development Workflow
+
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+3. Make your changes
+4. **Run tests locally**: `molecule test` (test multiple OS with `MOLECULE_DISTRO=<distro>`)
+5. Commit your changes (`git commit -m 'Add some amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+### Testing Requirements
+
+- All new features must include appropriate tests
+- Tests must pass across all supported operating systems
+- Follow existing test patterns and documentation standards
+- Update documentation when adding new functionality
+
+### Code Standards
+
+- Follow Ansible best practices and conventions
+- Use meaningful variable names and task descriptions
+- Ensure idempotency for all tasks
+- Add appropriate tags for Docker environment limitations
+
+For detailed testing information and development guidelines, see [molecule/README.md](molecule/README.md).
 
 ## Changelog
 

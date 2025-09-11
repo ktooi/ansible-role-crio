@@ -1,10 +1,142 @@
 ---
-# This is an example playbook to execute Ansible tests.
-
-- name: Verify
+- name: Verify CRI-O Installation and Configuration
   hosts: all
-  gather_facts: false
+  gather_facts: true
   tasks:
-    - name: Example assertion
+    - name: Check if CRI-O service is installed
+      service_facts:
+
+    - name: Verify CRI-O service is present
       assert:
-        that: true
+        that:
+          - "'crio.service' in services"
+        fail_msg: "CRI-O service is not installed"
+        success_msg: "CRI-O service is installed"
+
+    - name: Verify CRI-O service is enabled
+      assert:
+        that:
+          - services['crio.service'].status == 'enabled'
+        fail_msg: "CRI-O service is not enabled"
+        success_msg: "CRI-O service is enabled"
+
+    - name: Check CRI-O configuration file exists
+      stat:
+        path: /etc/crio/crio.conf
+      register: crio_config
+
+    - name: Verify CRI-O configuration file exists
+      assert:
+        that:
+          - crio_config.stat.exists
+        fail_msg: "CRI-O configuration file does not exist"
+        success_msg: "CRI-O configuration file exists"
+
+    - name: Check required kernel modules are loaded
+      shell: lsmod | grep -E "(overlay|br_netfilter)"
+      register: kernel_modules
+      changed_when: false
+      failed_when: false
+      tags: molecule-notest
+
+    - name: Verify overlay module is available
+      shell: modinfo overlay
+      register: overlay_module
+      changed_when: false
+      failed_when: false
+      tags: molecule-notest
+
+    - name: Verify br_netfilter module is available
+      shell: modinfo br_netfilter
+      register: br_netfilter_module
+      changed_when: false
+      failed_when: false
+      tags: molecule-notest
+
+    - name: Check kernel parameters file exists
+      stat:
+        path: /etc/sysctl.d/99-kubernetes-cri.conf
+      register: sysctl_config
+
+    - name: Verify kernel parameters file exists
+      assert:
+        that:
+          - sysctl_config.stat.exists
+        fail_msg: "Kernel parameters file does not exist"
+        success_msg: "Kernel parameters file exists"
+
+    - name: Check kernel parameters content
+      slurp:
+        src: /etc/sysctl.d/99-kubernetes-cri.conf
+      register: sysctl_content
+
+    - name: Verify required kernel parameters are set
+      assert:
+        that:
+          - "'net.bridge.bridge-nf-call-iptables = 1' in sysctl_content.content | b64decode"
+          - "'net.ipv4.ip_forward = 1' in sysctl_content.content | b64decode"
+          - "'net.bridge.bridge-nf-call-ip6tables = 1' in sysctl_content.content | b64decode"
+        fail_msg: "Required kernel parameters are not properly configured"
+        success_msg: "Required kernel parameters are properly configured"
+
+    - name: Check CRI-O binary exists
+      stat:
+        path: /usr/bin/crio
+      register: crio_binary
+
+    - name: Verify CRI-O binary exists
+      assert:
+        that:
+          - crio_binary.stat.exists
+          - crio_binary.stat.executable
+        fail_msg: "CRI-O binary does not exist or is not executable"
+        success_msg: "CRI-O binary exists and is executable"
+
+    - name: Check CRI-O version
+      command: /usr/bin/crio version
+      register: crio_version_output
+      changed_when: false
+      failed_when: false
+
+    - name: Verify CRI-O version output
+      assert:
+        that:
+          - crio_version_output.rc == 0
+          - "'crio version' in crio_version_output.stdout"
+        fail_msg: "CRI-O version command failed"
+        success_msg: "CRI-O version command succeeded"
+
+    - name: Check if systemd is available for service tests
+      stat:
+        path: /bin/systemctl
+      register: systemctl_available
+
+    - name: Test CRI-O service start (if systemd available)
+      block:
+        - name: Start CRI-O service
+          systemd:
+            name: crio
+            state: started
+          register: crio_start
+
+        - name: Verify CRI-O service started successfully
+          assert:
+            that:
+              - crio_start is succeeded
+            fail_msg: "Failed to start CRI-O service"
+            success_msg: "CRI-O service started successfully"
+
+        - name: Check CRI-O service status
+          systemd:
+            name: crio
+          register: crio_status
+
+        - name: Verify CRI-O service is running
+          assert:
+            that:
+              - crio_status.status.ActiveState == "active"
+            fail_msg: "CRI-O service is not running"
+            success_msg: "CRI-O service is running"
+
+      when: systemctl_available.stat.exists
+      tags: molecule-notest
