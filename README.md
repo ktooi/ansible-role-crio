@@ -57,17 +57,17 @@ The following operating systems are supported with CRI-O 1.28:
 | Operating System | `crio_os` Value | Status |
 |---|---|---|
 | Rocky Linux 8 | `CentOS_8` | ✅ Supported |
-| Rocky Linux 9 | `CentOS_9` | ✅ Supported |
+| Rocky Linux 9 | `CentOS_9_Stream` | ✅ Supported |
+| CentOS 8 Stream | `CentOS_8_Stream` | ✅ Supported |
 | CentOS 9 Stream | `CentOS_9_Stream` | ✅ Supported |
 | Red Hat Enterprise Linux 8 | `CentOS_8` | ✅ Supported |
-| Red Hat Enterprise Linux 9 | `CentOS_9` | ✅ Supported |
+| Red Hat Enterprise Linux 9 | `CentOS_9_Stream` | ✅ Supported |
 | Debian 10 | `Debian_10` | ✅ Supported |
 | Debian 11 | `Debian_11` | ✅ Supported |
 | Debian 12 | `Debian_12` | ✅ Supported |
 | Fedora 36 | `Fedora_36` | ✅ Supported |
 | Fedora 37 | `Fedora_37` | ✅ Supported |
 | Fedora 38 | `Fedora_38` | ✅ Supported |
-| Fedora 39 | `Fedora_39` | ✅ Supported |
 | Fedora Rawhide | `Fedora_Rawhide` | ✅ Supported |
 | Raspbian 10 | `Raspbian_10` | ✅ Supported |
 | Raspbian 11 | `Raspbian_11` | ✅ Supported |
@@ -84,6 +84,7 @@ The following operating systems are no longer supported due to end-of-life statu
 | CentOS 8 | `CentOS_8` | ❌ EOL (December 2021) |
 | Ubuntu 18.04 | `xUbuntu_18.04` | ❌ EOL (April 2023) |
 | Ubuntu 21.10 | `xUbuntu_21.10` | ❌ EOL (July 2022) |
+| Fedora 39 | `Fedora_39` | ❌ Repository not available |
 
 > **Note**: Available OS support depends on the CRI-O version. Check the [openSUSE Build Service](https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/) for version-specific OS availability.
 

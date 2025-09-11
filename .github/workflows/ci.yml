@@ -50,7 +50,6 @@ jobs:
           - rockylinux8
           - rockylinux9
           - fedora38
-          - fedora39
           - ubuntu2204
           # - ubuntu2110  # geerlingguy/docker-ubuntu2110-ansible does not exist
           # - ubuntu2104  # geerlingguy/docker-ubuntu2104-ansible does not exist
