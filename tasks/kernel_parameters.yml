@@ -1,9 +1,32 @@
 ---
-- name: Set sysctl parameters
+- name: Ensure sysctl.d directory exists
+  file:
+    path: /etc/sysctl.d
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  become: true
+
+- name: Create sysctl configuration file for CRI-O
+  copy:
+    dest: "{{ crio_sysctl_filename }}"
+    content: |
+      # Kubernetes CRI-O sysctl parameters
+      net.bridge.bridge-nf-call-iptables = 1
+      net.ipv4.ip_forward = 1
+      net.bridge.bridge-nf-call-ip6tables = 1
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
+- name: Apply sysctl parameters (skip in Docker environment)
   sysctl:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
     sysctl_file: "{{ crio_sysctl_filename }}"
+    reload: true
   with_items:
     - name: net.bridge.bridge-nf-call-iptables
       value: 1
@@ -12,3 +35,5 @@
     - name: net.bridge.bridge-nf-call-ip6tables
       value: 1
   become: true
+  tags:
+    - molecule-notest
