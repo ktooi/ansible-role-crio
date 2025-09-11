@@ -1,4 +1,13 @@
 ---
+- name: Ensure sysctl.d directory exists
+  file:
+    path: /etc/sysctl.d
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  become: true
+
 - name: Create sysctl configuration file for CRI-O
   copy:
     dest: "{{ crio_sysctl_filename }}"
