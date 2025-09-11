@@ -11,10 +11,15 @@
   notify: "{{ 'Restart CRI-O' if molecule_yml is not defined else omit }}"
   become: true
 
-- name: Ensure CRI-O is started and enabled at boot
+- name: Ensure CRI-O is enabled at boot
   systemd:
     name: crio
     enabled: true
+  become: true
+
+- name: Start CRI-O service (skip in Docker environment)
+  systemd:
+    name: crio
     state: started
   become: true
   tags:
