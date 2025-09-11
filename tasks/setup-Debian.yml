@@ -15,7 +15,10 @@
     url: "{{ crio_apt_repo_key_url }}"
     dest: "{{ crio_apt_repo_key_dest }}"
     force: true
+    timeout: 30
   become: true
+  retries: 3
+  delay: 5
   tags:
     - crio-repo-key
 
@@ -33,7 +36,10 @@
     url: "{{ crio_apt_crio_repo_key_url }}"
     dest: "{{ crio_apt_crio_repo_key_dest }}"
     force: true
+    timeout: 30
   become: true
+  retries: 3
+  delay: 5
   tags:
     - crio-repo-key
 
@@ -49,8 +55,11 @@
 - name: Update apt cache when needed
   apt:
     update_cache: true
+    allow_unauthenticated: true
   become: true
   when: utils_repo.changed or crio_repo.changed
+  retries: 3
+  delay: 10
 
 - name: Install cri-o
   apt:

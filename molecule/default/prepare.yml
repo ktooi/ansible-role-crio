@@ -1,17 +1,22 @@
 ---
 - name: Prepare
   hosts: all
-  gather_facts: false
+  gather_facts: true
   tasks:
-    - name: Update apt cache for Debian-based systems
-      raw: apt-get update
-      when: >
-        inventory_hostname in groups.get('debian10', []) or
-        inventory_hostname in groups.get('debian11', []) or
-        inventory_hostname in groups.get('debian12', []) or
-        inventory_hostname in groups.get('ubuntu2004', []) or
-        inventory_hostname in groups.get('ubuntu2204', [])
+    - name: Configure apt to allow unauthenticated packages temporarily (Debian/Ubuntu)
+      raw: |
+        echo 'APT::Get::AllowUnauthenticated "true";' > /etc/apt/apt.conf.d/99-allow-unauthenticated
+        echo 'Acquire::AllowInsecureRepositories "true";' >> /etc/apt/apt.conf.d/99-allow-unauthenticated
+        echo 'Acquire::AllowDowngradeToInsecureRepositories "true";' >> /etc/apt/apt.conf.d/99-allow-unauthenticated
+      when: ansible_os_family == "Debian"
       changed_when: false
+
+    - name: Update apt cache for Debian-based systems
+      raw: apt-get update --allow-unauthenticated --allow-insecure-repositories
+      when: ansible_os_family == "Debian"
+      changed_when: false
+      retries: 3
+      delay: 10
 
     - name: Preparation completed
       raw: echo "Preparation completed"
